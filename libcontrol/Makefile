@@ -1,4 +1,6 @@
-CC = g++
-
 all:
-	$(CC) -o test main.c ctrl_connection.c -l cyusb
+	python3 setup.py build
+
+install:
+	python3 setup.py install
+
