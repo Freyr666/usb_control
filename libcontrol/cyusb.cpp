@@ -133,7 +133,6 @@ Connection_recv(Connection* self)
 			       self->max_size_in,
 			       &transd,
 			       100);
-    printf("Got %d bytes\n", transd);
     if ( rval != 0 ) {
       cyusb_error(rval);
     }
