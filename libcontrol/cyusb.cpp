@@ -8,6 +8,8 @@
 #define OUT_POINT 0x01
 #define IN_POINT 0x81
 
+#define MAX_BUF 1024
+
 #define CTRL_RETURN_NULL(msg)do{printf(msg);return -1;}while(0)
 
 typedef struct {
@@ -107,7 +109,8 @@ Connection_send(Connection* self,
 			       (u_char*)(buf+(passed*self->max_size_out)),
 			       tmp_size,
 			       &transd,
-			       100);
+			       500);
+    printf("Bytes sent: %d\n", transd);
     if ( rval != 0 ) {
       cyusb_error(rval);
     }
@@ -115,8 +118,6 @@ Connection_send(Connection* self,
   }
   return Py_None;
 }
-
-#define MAX_BUF 512
 
 static PyObject*
 Connection_recv(Connection* self)
@@ -132,13 +133,13 @@ Connection_recv(Connection* self)
 			       (unsigned char*)(buf+size),
 			       self->max_size_in,
 			       &transd,
-			       100);
+			       500);
     if ( rval != 0 ) {
       cyusb_error(rval);
     }
     size += transd;
   }
-  bytes = PyBytes_FromString(buf);
+  bytes = PyBytes_FromStringAndSize(buf, size);
   free(buf);
   return bytes;
 }
