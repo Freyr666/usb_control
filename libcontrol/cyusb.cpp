@@ -44,7 +44,8 @@ Connection_init(Connection* self,
 {
   int desc;
   cyusb_handle* tmp_handle = NULL;
-
+  
+  printf("Getting device handle\n");
   tmp_handle = cyusb_gethandle(0);
   
   if ( cyusb_getvendor(tmp_handle) != 0x04b4 )
@@ -201,26 +202,27 @@ cyusb_init(PyObject* self,
   desc = cyusb_open();
   if ( desc < 0 ) {
     printf("Error opening library\n");
-    //cyusb_close();
-    return Py_None;
+    cyusb_close();
+    return Py_False;
   }
   if ( desc == 0 ) {
     printf("No device found\n");
-    //cyusb_close();
-    return Py_None;
+    cyusb_close();
+    return Py_False;
   }
   if ( desc > 1 ) {
     printf("More than 1 devices of interest found. Disconnect unwanted devices\n");
-    //cyusb_close();
-    return Py_None;
+    cyusb_close();
+    return Py_False;
   }
-  return Py_None;
+  return Py_True;
 }
 
 static PyObject*
 cyusb_close(PyObject* self,
 		 PyObject* args)
 {
+  printf("Cyusb closed\n");
   cyusb_close();
   return Py_None;
 }
