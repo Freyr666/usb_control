@@ -201,17 +201,17 @@ cyusb_init(PyObject* self,
   desc = cyusb_open();
   if ( desc < 0 ) {
     printf("Error opening library\n");
-    cyusb_close();
+    //cyusb_close();
     return Py_None;
   }
   if ( desc == 0 ) {
     printf("No device found\n");
-    cyusb_close();
+    //cyusb_close();
     return Py_None;
   }
   if ( desc > 1 ) {
     printf("More than 1 devices of interest found. Disconnect unwanted devices\n");
-    cyusb_close();
+    //cyusb_close();
     return Py_None;
   }
   return Py_None;
