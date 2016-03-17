@@ -46,7 +46,7 @@ Connection_init(Connection* self,
   cyusb_handle* tmp_handle = NULL;
 
   tmp_handle = cyusb_gethandle(0);
-
+  
   if ( cyusb_getvendor(tmp_handle) != 0x04b4 )
     CTRL_RETURN_NULL("Cypress chipset not detected\n");
   printf("VID=%04x,PID=%04x,BusNum=%02x,Addr=%d\n",
@@ -110,7 +110,6 @@ Connection_send(Connection* self,
 			       tmp_size,
 			       &transd,
 			       500);
-    printf("Bytes sent: %d\n", transd);
     if ( rval != 0 ) {
       cyusb_error(rval);
     }
