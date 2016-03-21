@@ -4,3 +4,5 @@ all:
 install:
 	python3 setup.py install
 
+rpm:
+	python3 setup.py bdist_rpm
