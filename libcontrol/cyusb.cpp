@@ -5,10 +5,10 @@
 #include <malloc.h>
 #include "../include/cyusb.h"
 
-#define OUT_POINT 0x01
-#define IN_POINT 0x81
+#define OUT_POINT 0x02
+#define IN_POINT 0x86
 
-#define MAX_BUF 1024
+#define MAX_BUF 8192
 
 #define CTRL_RETURN_NULL(msg)do{printf(msg);return -1;}while(0)
 

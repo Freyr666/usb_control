@@ -221,7 +221,7 @@ int cyusb_open(void)
 	return r;
 }
 
-int cyusb_open(unsigned short vid, unsigned short pid)
+int cyusb_open_exact(unsigned short vid, unsigned short pid)
 {
 	int r;
 	cyusb_handle *h = NULL;
@@ -385,7 +385,7 @@ int cyusb_get_config_descriptor(cyusb_handle *h, unsigned char config_index, str
 }
 
 int cyusb_get_config_descriptor_by_value(cyusb_handle *h, unsigned char bConfigurationValue, 
-									struct usb_config_descriptor **config)
+									struct libusb_config_descriptor **config)
 {
 	cyusb_device *tdev = libusb_get_device(h);
 	return ( libusb_get_config_descriptor_by_value(tdev, bConfigurationValue,
@@ -394,7 +394,7 @@ int cyusb_get_config_descriptor_by_value(cyusb_handle *h, unsigned char bConfigu
 
 void cyusb_free_config_descriptor(struct libusb_config_descriptor *config)
 {
-	libusb_free_config_descriptor( (libusb_config_descriptor *)config );
+	libusb_free_config_descriptor( (struct libusb_config_descriptor *)config );
 }
 
 int cyusb_get_string_descriptor_ascii(cyusb_handle *h, unsigned char index, unsigned char *data,  int length)

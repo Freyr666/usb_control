@@ -80,7 +80,7 @@ extern int cyusb_open(void);
                  unsigned short pid : Product ID
   Return Value : Returns 1 if a device of interest exists, else returns 0.
  *******************************************************************************************/
-extern int cyusb_open(unsigned short vid, unsigned short pid);
+extern int cyusb_open_exact(unsigned short vid, unsigned short pid);
 
 /*******************************************************************************************
   Prototype    : cyusb_handle * cyusb_gethandle(int index);
@@ -444,13 +444,13 @@ extern int cyusb_download_fx2(cyusb_handle *h, char *filename, unsigned char ven
 
 
 /****************************************************************************************
-  Prototype    : void cyusb_download_fx3(cyusb_handle *h, char *filename);
+  Prototype    : void cyusb_download_fx3(cyusb_handle *h, const char *filename);
   Description  : Performs firmware download on FX3.
   Parameters   :
                  cyusb_handle *h : Device handle
                  char *filename  : Path where the firmware file is stored
   Return Value : 0 on success, or an appropriate LIBUSB_ERROR.
  ***************************************************************************************/
-extern int cyusb_download_fx3(cyusb_handle *h, char *filename);
+extern int cyusb_download_fx3(cyusb_handle *h, const char *filename);
 
 #endif

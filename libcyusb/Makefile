@@ -1,6 +1,6 @@
 all:
-	g++ -fPIC -o libcyusb.o -c libcyusb.c
-	g++ -shared -Wl,-soname,libcyusb.so -o libcyusb.so.1 libcyusb.o -l usb-1.0 -l rt
+	gcc -fPIC -o libcyusb.o -c libcyusb.c
+	gcc -shared -Wl,-soname,libcyusb.so -o libcyusb.so.1 libcyusb.o -l usb-1.0 -l rt
 	rm -f libcyusb.o
 clean:
 	rm -f libcyusb.so.1
