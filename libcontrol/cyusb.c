@@ -219,8 +219,8 @@ cyusb_init(PyObject* self,
 }
 
 static PyObject*
-cyusb_close(PyObject* self,
-		 PyObject* args)
+cyusb_finish(PyObject* self,
+             PyObject* args)
 {
   printf("Cyusb closed\n");
   cyusb_close();
@@ -231,7 +231,7 @@ cyusb_close(PyObject* self,
 static PyMethodDef cyusb_methods[] =
   {
     {"init", cyusb_init, METH_NOARGS, "init-ing connections"},
-    {"close", cyusb_close, METH_NOARGS, "closing connections"},
+    {"close", cyusb_finish, METH_NOARGS, "closing connections"},
     {NULL, NULL, 0, NULL}
   };
 

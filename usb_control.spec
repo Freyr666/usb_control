@@ -1,6 +1,6 @@
 Summary:        usb library
 Name:           usb_control
-Version:        0.1.9
+Version:        0.1.10
 Release:        1%{?dist}
 License:        GPLv2.0
 Group:          System Environment/Libraries
@@ -27,6 +27,7 @@ make
 %{__mkdir_p} '%{buildroot}/etc/udev/rules.d/'
 %{__mkdir_p} '%{buildroot}/usr/local/bin/'
 
+cp ./%{name}/libcyusb/libcyusb.a %{buildroot}%{_libdir}/libcyusb.a
 cp ./%{name}/libcyusb/libcyusb.so.1 %{buildroot}%{_libdir}/libcyusb.so.1
 cp ./%{name}/libcyusb/libcyusb.so.1 %{buildroot}%{_libdir}/libcyusb.so
 
@@ -36,6 +37,7 @@ cp ./%{name}/configs/88-cyusb.rules %{buildroot}/etc/udev/rules.d/88-cyusb.rules
 cp ./%{name}/configs/cy_renumerate.sh %{buildroot}/usr/local/bin/cy_renumerate.sh
 
 %files
+%{buildroot}%{_libdir}/libcyusb.a
 %{buildroot}%{_libdir}/libcyusb.so.1
 %{buildroot}%{_libdir}/libcyusb.so
 %{buildroot}/usr/include/cyusb.h

@@ -1,7 +1,7 @@
 from distutils.core import setup, Extension
 
 cyusb = Extension('cyusb',
-     	          sources=['cyusb.cpp'],
+     	          sources=['cyusb.c'],
                   libraries=['cyusb'])
 
 setup(name="cyusb",
